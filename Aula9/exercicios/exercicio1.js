@@ -4,12 +4,18 @@ números os números sequenciais do primeiro até o segundo, independente
 de ser maior ou menor.
  */
 
-num1 = 2;
-num2 = 9;
+num1 = 9;
+num2 = 2;
 array = [];
 
-for (let i = num1; i <= num2; i++) {
-  array.push(i);
+if (num1 < num2) {
+  for (let i = num1; i <= num2; i++) {
+    array.push(i);
+  }
+} else if (num1 > num2) {
+  for (let i = num2; i <= num1; i++) {
+    array.push(i);
+  }
 }
 
 console.log(array);
