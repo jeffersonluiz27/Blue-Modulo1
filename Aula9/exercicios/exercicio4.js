@@ -12,7 +12,7 @@ let candidato3 = 0;
 
 const eleitores = +prompt('Infome a quantidade de eleitores: ');
 
-for (let i = 0; i < eleitores; i++) {
+for (let i = 0; i < eleitores; ) {
   console.log(`Candidatos: 
   Digite 1 para Candidato1
   Digite 2 para Candidato2
@@ -20,12 +20,19 @@ for (let i = 0; i < eleitores; i++) {
   let voto = prompt(`Eleitor nº ${i + 1}. Informe seu voto: `);
   if (voto == 1) {
     candidato1++;
+    console.clear();
   } else if (voto == 2) {
     candidato2++;
+    console.clear();
   } else if (voto == 3) {
     candidato3++;
+    console.clear();
   } else {
+    console.clear();
+    console.log(`Por favor, digite um numero válido!!!\n`);
+    continue;
   }
+  i++;
 }
 
 console.log(`Resultado:
