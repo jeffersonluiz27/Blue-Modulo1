@@ -5,36 +5,41 @@ Construa uma função que receba uma data no formato DD/MM/AAAA e devolva uma st
 const prompt = require('prompt-sync')();
 
 data = prompt('Digite uma data no formato DD/MM/AAAA: ');
+let dataSplit = data.split('/');
 
-function dataPorExtenso(data) {
-  let dataSplit = data.split('/');
-
-  if (dataSplit[1] == 1) {
-    return `${dataSplit[0]} de Janeiro de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 2) {
-    return `${dataSplit[0]} de Fevereiro de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 3) {
-    return `${dataSplit[0]} de Março de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 4) {
-    return `${dataSplit[0]} de Abril de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 5) {
-    return `${dataSplit[0]} de Maio de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 6) {
-    return `${dataSplit[0]} de Junho de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 7) {
-    return `${dataSplit[0]} de Julho de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 8) {
-    return `${dataSplit[0]} de Agosto de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 9) {
-    return `${dataSplit[0]} de Setembro de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 10) {
-    return `${dataSplit[0]} de Outubro de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 11) {
-    return `${dataSplit[0]} de Novembro de ${dataSplit[2]}`;
-  } else if (dataSplit[1] == 12) {
-    return `${dataSplit[0]} de Dezembro de ${dataSplit[2]}`;
-  } else {
+function dataPorExtenso(dia, mes, ano) {
+  if (dia > 31 || dia < 1) {
+    return null;
+  } else if (mes > 12 || mes < 1) {
+    return null;
+  } else if (ano < 1000) {
     return null;
   }
+
+  if (mes == '01') {
+    return `${dia} de Janeiro de ${ano}`;
+  } else if (mes == '02') {
+    return `${dia} de Fevereiro de ${ano}`;
+  } else if (mes == '03') {
+    return `${dia} de Março de ${ano}`;
+  } else if (mes == '04') {
+    return `${dia} de Abril de ${ano}`;
+  } else if (mes == '05') {
+    return `${dia} de Maio de ${ano}`;
+  } else if (mes == '06') {
+    return `${dia} de Junho de ${ano}`;
+  } else if (mes == '07') {
+    return `${dia} de Julho de ${ano}`;
+  } else if (mes == '08') {
+    return `${dia} de Agosto de ${ano}`;
+  } else if (mes == '09') {
+    return `${dia} de Setembro de ${ano}`;
+  } else if (mes == '10') {
+    return `${dia} de Outubro de ${ano}`;
+  } else if (mes == '11') {
+    return `${dia} de Novembro de ${ano}`;
+  } else if (mes == '12') {
+    return `${dia} de Dezembro de ${ano}`;
+  }
 }
-console.log(dataPorExtenso(data));
+console.log(dataPorExtenso(dataSplit[0], dataSplit[1], dataSplit[2]));
