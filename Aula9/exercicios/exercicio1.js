@@ -4,9 +4,9 @@ números os números sequenciais do primeiro até o segundo, independente
 de ser maior ou menor.
  */
 
-num1 = 9;
-num2 = 2;
-array = [];
+const num1 = 9;
+const num2 = 2;
+const array = [];
 
 if (num1 < num2) {
   for (let i = num1; i <= num2; i++) {
