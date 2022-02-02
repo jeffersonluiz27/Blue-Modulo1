@@ -22,9 +22,9 @@ Qual candidato venceu a votação
 
 const prompt = +require('prompt-sync')();
 
-function autorizaVoto(ano) {
+function autorizaVoto(anoNascimento) {
   let anoAtual = new Date().getFullYear();
-  let idade = anoAtual - ano;
+  let idade = anoAtual - anoNascimento;
   if (idade < 16) {
     return 'Negado';
   } else if (idade >= 18 && idade < 65) {
