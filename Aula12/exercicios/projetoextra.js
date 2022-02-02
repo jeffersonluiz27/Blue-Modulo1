@@ -19,3 +19,19 @@ O total de votos nulos
 O total de votos em branco
 Qual candidato venceu a votação
  */
+
+const prompt = +require('prompt-sync')();
+
+function autorizaVoto(ano) {
+  let anoAtual = new Date().getFullYear();
+  let idade = anoAtual - ano;
+  if (idade < 16) {
+    return 'Negado';
+  } else if (idade >= 18 && idade < 65) {
+    return 'Obrigatorio';
+  } else {
+    return 'Opcional';
+  }
+}
+
+console.log(autorizaVoto(1942));
