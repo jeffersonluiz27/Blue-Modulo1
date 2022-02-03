@@ -3,8 +3,27 @@ Crie um objeto pessoa com os atributos: nome, idade, peso e altura. Além disso 
  */
 
 const pessoa = {
-  nome: '',
-  idade: 0,
-  peso: 0,
-  altura: 0,
+  nome: 'Jefferson',
+  idade: 15,
+  peso: 60,
+  altura: 1.52,
+  envelhecer: (x) => {
+    for (let i = 0; i < x; i++) {
+      pessoa.idade++;
+      if (pessoa.idade < 22) {
+        pessoa.crescer(0.05);
+      }
+    }
+  },
+  engordar: (x) => (pessoa.peso += x),
+  emagrecer: (x) => (pessoa.peso -= x),
+  crescer: (x) => (pessoa.altura += x),
+  bio: () => {
+    return `${pessoa.nome}, ${pessoa.idade} anos, ${
+      pessoa.peso
+    } Kg, ${pessoa.altura.toFixed(2)} cm`;
+  },
 };
+
+pessoa.envelhecer(6);
+console.log(pessoa.bio());
