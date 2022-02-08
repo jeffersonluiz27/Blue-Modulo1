@@ -3,24 +3,26 @@ let vitoriaPersonagem = 0;
 let vitoriaVelho = 0;
 
 for (let i = 0; i < 3; i++) {
-  let velho = 0;
-  let personagem = 0;
-  let moeda = 0;
+  let escolhaVelho = 0;
+  let escolhaPersonagem = 0;
+  let faceMoeda = 0;
 
   do {
     console.log(`\nRodada ${i + 1}\n`);
-    personagem = parseInt(prompt('Escolha uma opção: 1 - Cara | 2 - Coroa: '));
-    if (personagem == 1) {
-      velho = 2;
-    } else if (personagem == 2) {
-      velho = 1;
+    escolhaPersonagem = parseInt(
+      prompt('Escolha uma opção: 1 - Cara | 2 - Coroa: ')
+    );
+    if (escolhaPersonagem == 1) {
+      escolhaVelho = 2;
+    } else if (escolhaPersonagem == 2) {
+      escolhaVelho = 1;
     } else {
       console.log('Opção inválida!! \n');
     }
-    moeda = Math.floor(2 * Math.random() + 1);
-  } while (personagem != 1 && personagem != 2);
+    faceMoeda = Math.floor(2 * Math.random() + 1);
+  } while (escolhaPersonagem != 1 && escolhaPersonagem != 2);
 
-  if (personagem == moeda) {
+  if (escolhaPersonagem == faceMoeda) {
     vitoriaPersonagem++;
   } else {
     vitoriaVelho++;
