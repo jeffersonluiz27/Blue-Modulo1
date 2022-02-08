@@ -1,10 +1,27 @@
+//Chamada do Prompt
+var prompt = require('prompt-sync')();
+
+//Inicio => inserir nome do personagem
+console.log('Bem-vindo ao OuterWorld!');
+const nome = prompt('Qual o nome do seu guerreiro? ');
+
+//Apresenta a introdução ao jogador
+// console.log(`Introdução ${nome} `);
+
+//Controi o personagem e seus atributos
+const sujeitoPersonagem = {
+  nome: nome,
+  vida: 100,
+  stamina: 100, //Energia
+  ataque: 100,
+  defesa: 100,
+  itens: [],
+};
+
+//Teste para conferir objeto
+// console.log(sujeitoPersonagem);
+
 /*
-var prompt = require("prompt-sync")();
-
-console.log("Bem-vindo ao OuterWorld!");
-const nome = prompt("Qual o nome do seu guerreiro? ");
-console.log(`Introdução ${nome} `);
-
 var danoRecebido = 0;
 
 const sujeitoPersonagem = {
