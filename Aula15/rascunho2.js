@@ -14,19 +14,19 @@ for (let i = 0; i < 3; ) {
   } else if (opcao.trim().toLowerCase() == 'verde') {
     bebidaEscolhida(opcao, resposta);
   } else {
-    console.log('Opção inválida!');
+    console.log('Opção inválida! Digite a palavra!\n');
     continue;
   }
   i++;
 }
 
 function bebidaEscolhida(opcao, resposta) {
-  console.log(`Você escolheu a bebida ${opcao}. `);
+  console.log(`\nVocê escolheu a bebida ${opcao}. `);
   if (resposta == 1) {
-    console.log('Você perdeu uma vida.');
+    console.log('Você perdeu uma vida.\n');
   } else if (resposta == 2) {
-    console.log('Você perdeu meia vida.');
+    console.log('Você perdeu meia vida.\n');
   } else {
-    console.log('Escapou! Não perdeu vida.');
+    console.log('Escapou! Não perdeu vida.\n');
   }
 }
