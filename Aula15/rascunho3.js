@@ -1,12 +1,31 @@
 //Chamada do Prompt
 var prompt = require('prompt-sync')();
 
-//Inicio => inserir nome do personagem
+//limpa o console na inicialização
+console.clear();
+
+//Inicio -> inserir nome do personagem
 console.log('Bem-vindo ao OuterWorld!');
-const nome = prompt('Qual o nome do seu guerreiro? ');
+const nome = 'TEMP';
+// prompt('Qual o nome do seu guerreiro? ');
 
 //Apresenta a introdução ao jogador
 // console.log(`Introdução ${nome} `);
+// console.log(`
+// Ah Nobre Guerreiro ${nome}!! Eu já lhe aguardava! A Princesa Astrid já havia 
+// me dito de sua chegada. Seu nome por essas bandas já é famoso e sei que você 
+// veio para provar as aventuras de nosso Vale. Ele não é brincadeira não, muitos 
+// aventureiros já ficaram pelo caminho. Mas, você, eu sei que você é de uma 
+// graduação diferente!
+
+// Como você viajou o dia todo, peço que você se junte ao nosso salão principal, 
+// hoje é dia de Cordeiro e do vinho das Montanhas de Ziu! Um espetáculo, embalará 
+// o seu sono...
+
+// Amanha você partirá, após nosso café Imperial. Uma dosede carboidrato e proteínas 
+// lhe deixarão pronto para desfiladeiros e Dragões!
+// `);
+
 
 //Controi o personagem e seus atributos
 const sujeitoPersonagem = {
@@ -21,55 +40,66 @@ const sujeitoPersonagem = {
 //Teste para conferir objeto
 // console.log(sujeitoPersonagem);
 
-/*
-var danoRecebido = 0;
-
-const sujeitoPersonagem = {
-  nome: nome,
-  vida: 5,
-  stamina: 10,
-  itens: [],
-  porrada: function () {
-      // caso ache melhor um retorno com mais casas decimais, basta aumentar argumento de toFixed
-    const dano =
-      0.3 * this.vida + 0.5 * parseFloat((this.stamina * Math.random()).toFixed(1)) + 0.2 * this.itens;
-    return dano;
-  },
-};
-console.log(sujeitoPersonagem.nome);
-
-//a função porrada retorna o valor de dano. Nao é possivel invocar a variável dano
-
-console.log(sujeitoPersonagem.porrada());
-
-// Adicionando nova skill
-sujeitoPersonagem.bolaDeFogo = function bolaDeFogo() {
-    // caso ache melhor um retorno com mais casas decimais, basta aumentar argumento de toFixed
-  const dano =
-    0.7 * this.vida + 0.5 * parseFloat((this.stamina * Math.random()).toFixed(1)) + 0.2 * this.itens;
-  return dano;
-},
-
+//Teste adiciona nova skill
+// sujeitoPersonagem.skill = { nome: 'Bola de Fogo', ataque: 10 };
 
 console.log(sujeitoPersonagem);
-console.log(`Dano bola de fogo= ${sujeitoPersonagem.bolaDeFogo()}`);
 
+/*
 
+//Começa a jornada
+while (caminho != 'bosque' && caminho != 'ferreiro' && caminho != 'exercito') {
+  console.log('Que caminho você gostaria de iniciar? ');
+  var caminho = prompt('Para escolher digite: BOSQUE, FERREIRO ou EXERCITO. ');
+
+  switch (caminho.toLowerCase()) {
+    case 'bosque':
+      console.log('Voce optou pelo BOSQUE. Daqui vc tem duas opcoes de itens.');
+      let itembosque = prompt('Escolha um item: POCÃO ou DINHEIRO? ');
+      if (itembosque.toLowerCase() == 'pocao') {
+        console.log('voce pegou o item POÇÃO');
+        sujeitoPersonagem.itens.push({nome: 'pocao', atrib:10});
+      } else {
+        console.log('voce pegou o dinheiro de item');
+        sujeitoPersonagem.itens.push({nome: 'dinheiro', atrib:1000});
+      }
+      break;
+    case 'ferreiro':
+      console.log(
+        'Voce optou pelo Ferreiro. Não é uma caminhada longa, ele faz muitos adornos as elites e não pode se distanciar muito do palácio do Rei. Daqui vc tem duas opcoes..'
+      );
+      let itemferreiro = prompt(
+        `Quer qual das duas opcoes, Armadura ou Escudo?`
+      );
+      if (itemferreiro.toLowerCase == 'armadura') {
+        console.log('voce pegou a armadura de item');
+        sujeitoPersonagem.itens.push({nome: 'armadura', atrib:10});
+      } else {
+        console.log('voce pegou o escudo de item');
+        sujeitoPersonagem.itens.push({nome: 'escudo', atrib:10});
+      }
+      break;
+    case 'exercito':
+      console.log(
+        'Voce optou ir visitar a artilharia pesada. Você considera que é bom estar armado para sua jornada. Bem pensado, afinal, quais desafios você pode encontrar pelo caminho!? E como transpo-los sem nada na mão!?'
+      );
+      var itemexercito = prompt(
+        `Você chega e é recepcionado pelo Sargeto Orveu, ele é o responsável pelas armas de combate e já aguardava a sua chegada. Orveu tem uma presença dominante e não é de muitas palavras. Pergunta rapidamente qual será a sua jornada, o que possivelmente você irá enfrentar e pega dos itens a mão. Uma espada e uma foice. Quer qual das duas opcoes, digite foice ou espada: `
+      );
+      if (itemexercito.toLowerCase == 'espada') {
+        console.log('voce pegou a espada de item');
+        sujeitoPersonagem.itens.push({nome: 'espada', atrib:10});
+      } else {
+        console.log('voce pegou a foice de item');
+        sujeitoPersonagem.itens.push({nome: 'foice', atrib:10});
+      }
+      break;
+    default:
+      console.log('Desculpe, estamos sem nenhuma ${}.');
+  }
+}
 
 //----------------------------------------------------------------//
-
-
-
-//Reino 1 : Floresta Tropical / condado/ 
-console.log(`Você chegou na Adega do Gnomo! Aqui muitos guerreiros vem para descansar e tomar uns drinks.
-Papo vai, Papo vem e você foi desafiado para uma roleta russa com os drinks de um mago poderoso do local. 
-São 3 rodadas de shots e duas das três bebidas não fazem bem para sua saude. Uma tirará meio ponto de vida
-e a outra tirará um ponto. Espero que você escolha a certa todas as vezes, grande Guerreiro!`);
-
-console.log(`Você chegou na Adega do Gnomo! Aqui muitos guerreiros vem para descansar e tomar uns drinks.
-Papo vai, Papo vem e você foi desafiado para uma roleta russa com os drinks de um mago poderoso do local. 
-São 3 rodadas de shots e duas das três bebidas não fazem bem para sua saude. Uma tirará meio ponto de vida
-e a outra tirará um ponto. Espero que você escolha a certa todas as vezes, grande Guerreiro!`);
 
 // * Colheita com o Elfo Armador 
 // switch com 3 cases, cada um com mais duas opcoes por case que levam a itens
@@ -77,50 +107,11 @@ e a outra tirará um ponto. Espero que você escolha a certa todas as vezes, gra
 // foice 2 / espada 3
 // dinheiro/xxxxx
 
-
-var caminho = prompt(`Que caminho você gostaria de iniciar? Digite Bosque, Ferreiro ou Exercito`);
-
-while (caminho != `bosque` && caminho != `ferreiro` && caminho != `exercito`);
-switch (caminho) {
-  case "bosque":
-    console.log("Voce optou pelo bosque. Daqui vc tem duas opcoes de itens.");
-    var itembosque = prompt(`Quer qual das duas opcoes, que leva a pocao ou ao xxx?`);
-    if(itembosque.toLowerCase == "pocao"){
-      console.log("voce pegou a pocao de item");
-      sujeitoPersonagem.itens.pop(pocao)
-    }else {
-      console.log("voce pegou o dinheiro de item");
-      sujeitoPersonagem.itens.pop(dinheiro)
-    }
-    break;
-  case "ferreiro":
-    console.log("Voce optou pelo Ferreiro. Não é uma caminhada longa, ele faz muitos adornos as elites e não pode se distanciar muito do palácio do Rei. Daqui vc tem duas opcoes..");
-    var itemferreiro = prompt(`Quer qual das duas opcoes, Armadura ou Escudo?`);
-    if(itemferreiro.toLowerCase == "armadura"){
-      console.log("voce pegou a armadura de item");
-      sujeitoPersonagem.itens.pop(armadura)
-    }else {
-      console.log("voce pegou o escudo de item");
-      sujeitoPersonagem.itens.pop(escudo)
-    }
-    break;
-  case "exercito":
-    console.log("Voce optou ir visitar a artilharia pesada. Você considera que é bom estar armado para sua jornada. Bem pensado, afinal, quais desafios você pode encontrar pelo caminho!? E como transpo-los sem nada na mão!?");
-    var itemexercito = prompt(`Você chega e é recepcionado pelo Sargeto Orveu, ele é o responsável pelas armas de combate e já aguardava a sua chegada. Orveu tem uma presença dominante e não é de muitas palavras. Pergunta rapidamente qual será a sua jornada, o que possivelmente você irá enfrentar e pega dos itens a mão. Uma espada e uma foice. Quer qual das duas opcoes, digite foice ou espada: `);
-    if(itemexercito.toLowerCase == "espada"){
-      console.log("voce pegou a espada de item");
-      sujeitoPersonagem.itens.pop(espada)
-    }else {
-      console.log("voce pegou a foice de item");
-      sujeitoPersonagem.itens.pop(foice)
-    }
-    break;
-  default:
-    console.log("Desculpe, estamos sem nenhuma " + expr + ".");
-}
-
-console.log("Tem algo mais que você gostaria de levar?");
-
+//Reino 1 : Floresta Tropical / Condado
+console.log(`Você chegou na Adega do Gnomo! Aqui muitos guerreiros vem para descansar e tomar uns drinks.
+Papo vai, Papo vem e você foi desafiado para uma roleta russa com os drinks de um mago poderoso do local. 
+São 3 rodadas de shots e duas das três bebidas não fazem bem para sua saude. Uma tirará meio ponto de vida
+e a outra tirará um ponto. Espero que você escolha a certa todas as vezes, grande Guerreiro!`);
 
 console.log(`Você chegou na Adega do Gnomo! Aqui muitos guerreiros vem para descansar e tomar uns drinks.
 Papo vai, Papo vem e você foi desafiado para uma roleta russa com os drinks de um mago poderoso do local. 
@@ -158,12 +149,6 @@ function bebidaEscolhida(opcao, resposta) {
     console.log('Escapou! Não perdeu vida.\n');
   }
 }
-
-         
-console.log(`Luta chefão: Gigante da Colina -  vida - dinheiro/itens Você chegou na Adega do Gnomo! Aqui muitos guerreiros vem para descansar e tomar uns drinks.
-Papo vai, Papo vem e você foi desafiado para uma roleta russa com os drinks de um mago poderoso do local. 
-São 3 rodadas de shots e duas das três bebidas não fazem bem para sua saude. Uma tirará meio ponto de vida
-e a outra tirará um ponto. Espero que você escolha a certa todas as vezes, grande Guerreiro!`);
 
 //Ataque turno/rodadas / vida gigante 50
 //Gigante é lento ataca a cada tres rodadas - tirando 1 de vida
@@ -284,6 +269,16 @@ if (vitoriaPersonagem > vitoriaVelho) {
 }
 
 
+
+
+console.log(sujeitoPersonagem);
+let item = sujeitoPersonagem.itens.find(x => x.nome === 'pocao');
+console.log(item);
+if(item != undefined){
+  console.log(item.atrib); // Funciona
+}else{
+  console.log('Falhou');
+}
 
 // Pescar pela sobrevivencia - Se tiver a rede de pesca pega peixes que restauram de 50% a 70%
 // da vida/energia. Se não tiver a rede de pescar ele usa outro item e pesca so um peixe que restaura até 20%
