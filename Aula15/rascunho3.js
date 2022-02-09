@@ -45,6 +45,75 @@ const sujeitoPersonagem = {
 
 console.log(sujeitoPersonagem);
 
+
+//Reino de Gelo
+// O personagem se depara com um velho misterioso que lhe oferece uma rede de pesca para
+// pegar peixes e se alimentar recuperando um pouco de vida/energia
+// Mas para conseguir rede o personagem deve jogar cara ou coroa com o velho
+// O jogo tem 3 rodas
+
+let vitoriaPersonagem = 0;
+let vitoriaVelho = 0;
+
+for (let i = 0; i < 3; i++) {
+  let escolhaVelho = 0;
+  let escolhaPersonagem = 0;
+  let faceMoeda = 0;
+
+  do {
+    console.log(`\nRodada ${i + 1}\n`);
+    escolhaPersonagem = parseInt(
+      prompt('Escolha uma opção: 1 - Cara | 2 - Coroa: ')
+    );
+    if (escolhaPersonagem == 1) {
+      escolhaVelho = 2;
+    } else if (escolhaPersonagem == 2) {
+      escolhaVelho = 1;
+    } else {
+      console.log('Opção inválida!! \n');
+    }
+    faceMoeda = Math.floor(2 * Math.random() + 1);
+  } while (escolhaPersonagem != 1 && escolhaPersonagem != 2);
+
+  if (escolhaPersonagem == faceMoeda) {
+    vitoriaPersonagem++;
+  } else {
+    vitoriaVelho++;
+  }
+
+  console.log(
+    `Placar: Velho: ${vitoriaVelho} | ${nome}: ${vitoriaPersonagem}`
+  );
+}
+
+if (vitoriaPersonagem > vitoriaVelho) {
+  console.log('\nParabens! \nVocê ganhou o duelo e recebeu uma rede de pesca!');
+  sujeitoPersonagem.itens.push({nome: 'RedePesca', atrib: 50});
+} else {
+  console.log('\nQue pena! \nVocê perdeu o duelo!');
+}
+
+// Pescar pela sobrevivencia - Se tiver a rede de pesca pega peixes que restauram de 50% a 70%
+// da vida/energia. Se não tiver a rede de pescar ele usa outro item e pesca so um peixe que restaura até 20%
+
+console.log(sujeitoPersonagem);
+let item = sujeitoPersonagem.itens.find(x => x.nome === 'RedePesca');
+// console.log(item);
+if(item != undefined){
+  // console.log(item.nome); // Funciona
+  // console.log(item.atrib);
+  console.log('Voce tem Rede de Pesca e pegou muitos paixes. Ganha 50 de vida');
+  sujeitoPersonagem.vida += item.atrib;
+}else{
+  console.log('Como voce não tem uma rede de pesca, voce tentou pegar um peixe com a mão. Voce conseguiu pegar mas foi um peixe muito pequeno e ainda congelou a mão, você recupera apenas 10% de # mas gastou x de stamina');
+}
+
+console.log(sujeitoPersonagem);
+
+// Luta chefão Dragão de gelo - vida - dinheiro/itens
+
+//Implementar aqui a mesma logica dos outros chefões
+
 /*
 
 //Começa a jornada
@@ -222,75 +291,11 @@ console.log(`Você deve ter conhecido Caronte, o barqueiro. Sujeito grave, tacit
 se não tiver a rede de pescar ele pesca so um peixe que restaura até 20%
 * Luta chefão Dragão de gelo - vida - dinheiro/itens
 
-//Reino de Gelo
-// O personagem se depara com um velho misterioso que lhe oferece uma rede de pesca para
-// pegar peixes e se alimentar recuperando um pouco de vida/energia
-// Mas para conseguir rede o personagem deve jogar cara ou coroa com o velho
-// O jogo tem 3 rodas
-
-let vitoriaPersonagem = 0;
-let vitoriaVelho = 0;
-
-for (let i = 0; i < 3; i++) {
-  let escolhaVelho = 0;
-  let escolhaPersonagem = 0;
-  let faceMoeda = 0;
-
-  do {
-    console.log(`\nRodada ${i + 1}\n`);
-    escolhaPersonagem = parseInt(
-      prompt('Escolha uma opção: 1 - Cara | 2 - Coroa: ')
-    );
-    if (escolhaPersonagem == 1) {
-      escolhaVelho = 2;
-    } else if (escolhaPersonagem == 2) {
-      escolhaVelho = 1;
-    } else {
-      console.log('Opção inválida!! \n');
-    }
-    faceMoeda = Math.floor(2 * Math.random() + 1);
-  } while (escolhaPersonagem != 1 && escolhaPersonagem != 2);
-
-  if (escolhaPersonagem == faceMoeda) {
-    vitoriaPersonagem++;
-  } else {
-    vitoriaVelho++;
-  }
-
-  console.log(
-    `Placar: Velho: ${vitoriaVelho} Personagem: ${vitoriaPersonagem}`
-  );
-}
-
-if (vitoriaPersonagem > vitoriaVelho) {
-  console.log('\nParabens! \nVocê ganhou o duelo e recebeu uma rede de pesca!');
-} else {
-  console.log('\nQue pena! \nVocê perdeu o duelo!');
-}
 
 
 
 
-console.log(sujeitoPersonagem);
-let item = sujeitoPersonagem.itens.find(x => x.nome === 'pocao');
-console.log(item);
-if(item != undefined){
-  console.log(item.atrib); // Funciona
-}else{
-  console.log('Falhou');
-}
-
-// Pescar pela sobrevivencia - Se tiver a rede de pesca pega peixes que restauram de 50% a 70%
-// da vida/energia. Se não tiver a rede de pescar ele usa outro item e pesca so um peixe que restaura até 20%
-
-// if(iten existe na sacola de itens){
-//     faz um random para recuperar de 50% a 70% da vida/energia
-// }else{
-//     faz um randon para recuperar até 20%
-// }
 
 
-// Luta chefão Dragão de gelo - vida - dinheiro/itens
 
-//Implementar aqui a mesma logica dos outros chefões
 */
