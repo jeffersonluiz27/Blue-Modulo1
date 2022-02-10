@@ -6,26 +6,25 @@ console.clear();
 
 //Inicio -> inserir nome do personagem
 console.log('Bem-vindo ao OuterWorld!');
-const nome = 'TEMP';
+const nome = 'Jefferson';
 // prompt('Qual o nome do seu guerreiro? ');
 
 //Apresenta a introdução ao jogador
 // console.log(`Introdução ${nome} `);
 // console.log(`
-// Ah Nobre Guerreiro ${nome}!! Eu já lhe aguardava! A Princesa Astrid já havia 
-// me dito de sua chegada. Seu nome por essas bandas já é famoso e sei que você 
-// veio para provar as aventuras de nosso Vale. Ele não é brincadeira não, muitos 
-// aventureiros já ficaram pelo caminho. Mas, você, eu sei que você é de uma 
+// Ah Nobre Guerreiro ${nome}!! Eu já lhe aguardava! A Princesa Astrid já havia
+// me dito de sua chegada. Seu nome por essas bandas já é famoso e sei que você
+// veio para provar as aventuras de nosso Vale. Ele não é brincadeira não, muitos
+// aventureiros já ficaram pelo caminho. Mas, você, eu sei que você é de uma
 // graduação diferente!
 
-// Como você viajou o dia todo, peço que você se junte ao nosso salão principal, 
-// hoje é dia de Cordeiro e do vinho das Montanhas de Ziu! Um espetáculo, embalará 
+// Como você viajou o dia todo, peço que você se junte ao nosso salão principal,
+// hoje é dia de Cordeiro e do vinho das Montanhas de Ziu! Um espetáculo, embalará
 // o seu sono...
 
-// Amanha você partirá, após nosso café Imperial. Uma dosede carboidrato e proteínas 
+// Amanha você partirá, após nosso café Imperial. Uma dosede carboidrato e proteínas
 // lhe deixarão pronto para desfiladeiros e Dragões!
 // `);
-
 
 //Controi o personagem e seus atributos
 const sujeitoPersonagem = {
@@ -45,7 +44,6 @@ const sujeitoPersonagem = {
 
 console.log(sujeitoPersonagem);
 
-
 //Reino de Gelo
 // O personagem se depara com um velho misterioso que lhe oferece uma rede de pesca para
 // pegar peixes e se alimentar recuperando um pouco de vida/energia
@@ -56,9 +54,9 @@ let vitoriaPersonagem = 0;
 let vitoriaVelho = 0;
 
 for (let i = 0; i < 3; i++) {
-  let escolhaVelho = 0;
-  let escolhaPersonagem = 0;
-  let faceMoeda = 0;
+  let escolhaVelho;
+  let escolhaPersonagem;
+  let faceMoeda;
 
   do {
     console.log(`\nRodada ${i + 1}\n`);
@@ -81,14 +79,12 @@ for (let i = 0; i < 3; i++) {
     vitoriaVelho++;
   }
 
-  console.log(
-    `Placar: Velho: ${vitoriaVelho} | ${nome}: ${vitoriaPersonagem}`
-  );
+  console.log(`Placar: Velho: ${vitoriaVelho} | ${nome}: ${vitoriaPersonagem}`);
 }
 
 if (vitoriaPersonagem > vitoriaVelho) {
   console.log('\nParabens! \nVocê ganhou o duelo e recebeu uma rede de pesca!');
-  sujeitoPersonagem.itens.push({nome: 'RedePesca', atrib: 50});
+  sujeitoPersonagem.itens.push({ nome: 'RedePesca', atrib: 50 });
 } else {
   console.log('\nQue pena! \nVocê perdeu o duelo!');
 }
@@ -96,16 +92,18 @@ if (vitoriaPersonagem > vitoriaVelho) {
 // Pescar pela sobrevivencia - Se tiver a rede de pesca pega peixes que restauram de 50% a 70%
 // da vida/energia. Se não tiver a rede de pescar ele usa outro item e pesca so um peixe que restaura até 20%
 
-console.log(sujeitoPersonagem);
-let item = sujeitoPersonagem.itens.find(x => x.nome === 'RedePesca');
+// console.log(sujeitoPersonagem);
+let item = sujeitoPersonagem.itens.find((x) => x.nome === 'RedePesca');
 // console.log(item);
-if(item != undefined){
+if (item != undefined) {
   // console.log(item.nome); // Funciona
   // console.log(item.atrib);
   console.log('Voce tem Rede de Pesca e pegou muitos paixes. Ganha 50 de vida');
   sujeitoPersonagem.vida += item.atrib;
-}else{
-  console.log('Como voce não tem uma rede de pesca, voce tentou pegar um peixe com a mão. Voce conseguiu pegar mas foi um peixe muito pequeno e ainda congelou a mão, você recupera apenas 10% de # mas gastou x de stamina');
+} else {
+  console.log(
+    'Como voce não tem uma rede de pesca, voce tentou pegar um peixe com a mão. Voce conseguiu pegar mas foi um peixe muito pequeno e ainda congelou a mão, você recupera apenas 10 de vida mas gastou 50 de stamina'
+  );
 }
 
 console.log(sujeitoPersonagem);
