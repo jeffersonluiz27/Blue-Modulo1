@@ -27,14 +27,14 @@ const prompt = require('prompt-sync')();
 let opcao = 0;
 const anoAtual = new Date().getFullYear();
 
-//Objeto dos candidatos
-candidatos = [
+//Lista de Objetos dos candidatos
+const candidatos = [
 	{nome: 'Candidato 1', votos: 0,},
 	{nome: 'Candidato 2', votos: 0,},
 	{nome: 'Candidato 3', votos: 0,},
-	{nome: 'Nulos', votos: 0,},
-	{nome: 'Branco', votos: 0,}
 ]
+let brancos = 0;
+let nulos = 0;
 
 //Estrutura principal do programa
 while (opcao != 2){
@@ -57,16 +57,16 @@ while (opcao != 2){
 	do {
 		console.clear();
 		console.log('Deseja encerrar a votação?');
-		console.log('1 - Novo eleitor \n2 - Encerrar e apurar os votos');
+		console.log('1 - Novo eleitor \n2 - Encerrar e apurar os votos\n');
 		opcao = prompt('Escolha uma opção: ');
 		if (opcao != 1 && opcao != 2) {
 			errMensagem('Opção inválida!');
 			continue;
 		}
 	} while (opcao != 1 && opcao != 2);
-	
-	exibirResultados();
 }
+
+exibirResultados();
 
 
 //------------------ FUNÇÕES ------------------//
@@ -101,8 +101,8 @@ function pedeVoto(){
   1 = ${candidatos[0].nome}
   2 = ${candidatos[1].nome}
   3 = ${candidatos[2].nome}
-  4 = Voto ${candidatos[3].nome}
-  5 = Voto em ${candidatos[4].nome}
+  4 = Voto Nulo
+  5 = Voto em Branco
 	`);
 	voto = parseInt(prompt('Informe seu voto: '));
 
@@ -143,22 +143,35 @@ function votacao(autorizacao, voto) {
 			candidatos[2].votos++;
 			break;
 		case 4:
-			comprovanteVoto(candidatos[3].nome);
-			candidatos[3].votos++;
+			comprovanteVoto('Nulo');
+			nulos++;
 			break;
 		case 5:
-			comprovanteVoto(candidatos[4].nome);
-			candidatos[4].votos++;
+			comprovanteVoto('Branco');
+			brancos++;
 			break;
 		default:
 			errMensagem('Desculpe! Você tem menos de 16 anos \nVocê não pode votar!');
 	}
 }
 
+//Função exibe resultado da votação
 function exibirResultados() {
-	/*   
-	O total de votos para cada candidato
-  O total de votos nulos
-  O total de votos em branco
-  Qual candidato venceu a votação */
+	//Checa candidato mais votado, e coloca em uma lista caso haja mais de um!
+	const maiorVoto = candidatos.sort((a, b) => a.votos - b.votos)[
+		candidatos.length - 1
+	].votos;
+	const vencedor = candidatos.filter((a) => a.votos === maiorVoto)
+
+	console.clear();
+	console.log('RESULTADO: \n');
+	for (const c of candidatos) console.log(`${c.nome} recebeu ${c.votos} votos`);
+	console.log('\nQuantidade de votos nulos: ',nulos);
+	console.log('Quantidade de votos em branco: ',brancos);
+	if(vencedor.length == 1){
+		console.log(`\nO ${vencedor[0].nome} foi eleito com ${vencedor[0].votos} votos!`);
+	}else{
+		console.log(`\nHaverá 2º turno! \nOs candidatos empataram: `);
+		for (const v of vencedor) console.log(`${v.nome}`);
+	}
 }
